@@ -1,8 +1,6 @@
-var http = require('http');
+var express = require('express');
+var app = express();
 
-http.createServer(function(req,res){
-	res.writeHead(200,{'Content-Type':'text/plain'});
-	res.end('Olá mundo nodes!');
-}).listen(8080);
+app.use(express.static(__dirname+'/www'));
 
-console.log("Servidor rodando na porta 8080");
+app.listen(8080);
