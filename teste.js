@@ -1,17 +1,8 @@
-var fs = require('fs');
+var http = require('http');
 
-fs.readFile('texto.txt', function(e,r){
-	var log = r.toString();//Transforma em string
-	
-	var linhas = log.split('\n');//Cria um array de linhas
-	
-	for ( var i in linhas) {
-		var partes = linhas[i].split(' ');
-		
-		console.log("-------------------");
-		console.log('DATA: '+partes[0]);
-		console.log('TIPO: '+partes[1]);
-		console.log('MSG: '+partes[2]);
-	}
-	
-})
+http.createServer(function(req,res){
+	res.writeHead(200,{'Content-Type':'text/plain'});
+	res.end('Olá mundo nodes!');
+}).listen(8080);
+
+console.log("Servidor rodando na porta 8080");
